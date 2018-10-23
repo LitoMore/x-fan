@@ -1,0 +1,55 @@
+{
+  "name": "fanfou-f7",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "fanfou-sdk-browser": "^0.1.0",
+    "framework7": "^3.4.2",
+    "framework7-icons": "^0.9.1",
+    "framework7-react": "^3.4.2",
+    "react": "^16.5.2",
+    "react-dom": "^16.5.2",
+    "react-scripts": "2.0.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint-config-xo": "^0.25.0",
+    "eslint-config-xo-react": "^0.17.0",
+    "eslint-plugin-react": "^7.11.1",
+    "xo": "^0.23.0"
+  },
+  "xo": {
+    "parser": "babel-eslint",
+    "envs": [
+      "node",
+      "browser"
+    ],
+    "extends": [
+      "xo/esnext",
+      "xo-react"
+    ],
+    "rules": {
+      "import/no-unassigned-import": [
+        2,
+        {
+          "allow": [
+            "**/style/*.css",
+            "**/*.css"
+          ]
+        }
+      ]
+    }
+  }
+}
