@@ -18,7 +18,7 @@ login = async () => {
 	if (result) {
 		this.$f7router.navigate('/messages/');
 	} else {
-		alert('Username or password do not match');
+		this.$f7.dialog.alert('Username and password do not match', 'Login Error');
 	}
 }
 
