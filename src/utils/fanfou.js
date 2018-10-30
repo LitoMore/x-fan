@@ -11,21 +11,29 @@ const hooks = {
 			.replace('cors.fanfou.com', 'api.fanfou.com');
 	}
 };
+const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks};
 
-export const xauth = (username, password) => {
-	const ff = new Fanfou({
-		consumerKey,
-		consumerSecret,
+export const xauth = async (username, password) => {
+	const x = new Fanfou({
+		...opt,
 		username,
-		password,
-		apiDomain,
-		oauthDomain,
-		hooks
+		password
 	});
-	return ff.xauth();
+	const token = await x.xauth();
+	const {oauthToken, oauthTokenSecret} = token;
+	if (oauthToken && oauthTokenSecret) {
+		const o = new Fanfou({
+			...opt,
+			oauthToken,
+			oauthTokenSecret
+		});
+		const user = await o.get('/statuses/home_timeline', {});
+		return {token, user};
+	}
+	return null;
 };
 
-export const getUserTimeline = () => {
+const initFanfou = () => {
 	const accounts = getAccounts();
 	if (accounts.length === 0) {
 		return;
@@ -33,13 +41,14 @@ export const getUserTimeline = () => {
 	const [user] = accounts;
 	const {oauthToken, oauthTokenSecret} = user;
 	const ff = new Fanfou({
-		consumerKey,
-		consumerSecret,
+		...opt,
 		oauthToken,
-		oauthTokenSecret,
-		apiDomain,
-		oauthDomain,
-		hooks
+		oauthTokenSecret
 	});
+	return ff;
+};
+
+export const getUserTimeline = () => {
+	const ff = initFanfou();
 	return ff.get('/statuses/user_timeline', {count: 20});
 };

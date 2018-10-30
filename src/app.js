@@ -1,7 +1,7 @@
 import React from 'react';
 import {App, View} from 'framework7-react';
 import Login from './pages/login';
-import Messages from './pages/messages'
+import Messages from './pages/messages';
 
 const f7Params = {
 	name: 'Fanfou',

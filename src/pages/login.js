@@ -1,7 +1,7 @@
 import React from 'react';
 import {Page, LoginScreenTitle, List, ListItem, Label, Input, ListButton, BlockFooter} from 'framework7-react';
 import {xauth} from '../utils/fanfou';
-import {addAccount} from '../utils/account';
+// Import {addAccount} from '../utils/account';
 
 export default class extends React.Component {
 	constructor(props) {
@@ -14,9 +14,11 @@ export default class extends React.Component {
 
 login = async () => {
 	const {username, password} = this.state;
-	const {oauthToken, oauthTokenSecret} = await xauth(username, password);
-	if (oauthToken && oauthTokenSecret) {
-		addAccount({oauthToken, oauthTokenSecret});
+	const result = await xauth(username, password);
+	if (result) {
+		this.$f7router.navigate('/messages/');
+	} else {
+		alert('Username or password do not match');
 	}
 }
 
@@ -42,7 +44,8 @@ render() {
 			</List>
 			<List>
 				<ListButton onClick={this.login}>Sign In</ListButton>
-				<BlockFooter>Code with <span role="img" aria-label="love">❤️</span>️ by LitoMore</BlockFooter>
+				{/* eslint-disable-next-line */}
+				<BlockFooter>Code with ❤️️ by LitoMore</BlockFooter>
 			</List>
 		</Page>
 	);

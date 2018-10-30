@@ -3945,10 +3945,10 @@ extsprintf@^1.2.0:
   resolved "https://registry.yarnpkg.com/extsprintf/-/extsprintf-1.4.0.tgz#e2689f8f356fad62cca65a3a91c5df5f9551692f"
   integrity sha1-4mifjzVvrWLMplo6kcXfX5VRaS8=
 
-fanfou-sdk-browser@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/fanfou-sdk-browser/-/fanfou-sdk-browser-0.1.0.tgz#4947c1b459085e4b656a684bca66dd149cae9b82"
-  integrity sha512-zFoGJ2l6wunKzILGXx/ghpVLpu+v8gg8rTDcV0O3W8CBdV8BppUzGfZyboQt1MFfPW/Ipc5pctJbhxre4Wrncg==
+fanfou-sdk-browser@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/fanfou-sdk-browser/-/fanfou-sdk-browser-0.1.1.tgz#ff8d162fdcea2e436059448d1dadc45b7b4de8fe"
+  integrity sha512-v02Epg5eZJqgOFmitcUCbf2FfgOPbns4ZXUa3EK3EZ2B0bcdgYlXq1VjCRpev/pTLTypkHvcSRnPecS/fk6EEg==
   dependencies:
     he "^1.2.0"
     ky "^0.4.0"

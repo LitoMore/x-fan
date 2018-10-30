@@ -5,7 +5,7 @@ import F7React from 'framework7-react';
 import App from './app';
 import * as serviceWorker from './service-worker';
 import 'framework7/css/framework7.min.css';
-import 'framework7-icons/css/framework7-icons.css'
+import 'framework7-icons/css/framework7-icons.css';
 
 F7.use(F7React);
 
