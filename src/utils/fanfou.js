@@ -2,13 +2,13 @@ import Fanfou from 'fanfou-sdk-browser';
 import {consumerKey, consumerSecret} from '../config/fanfou.config';
 import {getAccounts} from './account';
 
-const apiDomain = 'x.fanfou.com';
-const oauthDomain = 'x.fanfou.com';
+const apiDomain = 'cors.fanfou.com';
+const oauthDomain = 'cors.fanfou.com';
 const hooks = {
 	baseString: baseStr => {
 		return baseStr
-			.replace('x.fanfou.com%2Foauth', 'fanfou.com%2Foauth')
-			.replace('x.fanfou.com', 'api.fanfou.com');
+			.replace('cors.fanfou.com%2Foauth', 'fanfou.com%2Foauth')
+			.replace('cors.fanfou.com', 'api.fanfou.com');
 	}
 };
 
