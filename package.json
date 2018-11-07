@@ -3,12 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rematch/core": "^1.0.6",
     "fanfou-sdk-browser": "^0.1.1",
     "framework7": "^3.4.2",
     "framework7-icons": "^0.9.1",
     "framework7-react": "^3.4.2",
+    "material-design-icons-iconfont": "^4.0.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
+    "react-redux": "^5.1.0",
     "react-scripts": "2.0.5"
   },
   "scripts": {

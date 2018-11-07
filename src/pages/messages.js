@@ -1,93 +1,53 @@
 import React from 'react';
-import {Page, Messagebar, Link} from 'framework7-react';
+import {connect} from 'react-redux';
+import {Page, Messages, Message, MessagesTitle, Messagebar, Link} from 'framework7-react';
 
-export default class extends React.Component {
+class FanfouMessages extends React.Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
-			attachments: [],
-			sheetVisible: false,
-			typingMessage: null,
-			messagesData: [
-				{
-					type: 'sent',
-					text: 'Hi, Kate'
-				},
-				{
-					type: 'sent',
-					text: 'How are you?'
-				},
-				{
-					name: 'Kate',
-					type: 'received',
-					text: 'Hi, I am good!',
-					avatar: 'http://lorempixel.com/100/100/people/9'
-				},
-				{
-					name: 'Blue Ninja',
-					type: 'received',
-					text: 'Hi there, I am also fine, thanks! And how are you?',
-					avatar: 'http://lorempixel.com/100/100/people/7'
-				},
-				{
-					type: 'sent',
-					text: 'Hey, Blue Ninja! Glad to see you ;)'
-				},
-				{
-					type: 'sent',
-					text: 'Hey, look, cutest kitten ever!'
-				},
-				{
-					type: 'sent',
-					image: 'http://lorempixel.com/200/260/cats/4/'
-
-				},
-				{
-					name: 'Kate',
-					type: 'received',
-					text: 'Nice!',
-					avatar: 'http://lorempixel.com/100/100/people/9'
-				},
-				{
-					name: 'Kate',
-					type: 'received',
-					text: 'Like it very much!',
-					avatar: 'http://lorempixel.com/100/100/people/9'
-				},
-				{
-					name: 'Blue Ninja',
-					type: 'received',
-					text: 'Awesome!',
-					avatar: 'http://lorempixel.com/100/100/people/7'
-				}
-			],
-			people: [
-				{
-					name: 'Kate Johnson',
-					avatar: 'http://lorempixel.com/100/100/people/9'
-				},
-				{
-					name: 'Blue Ninja',
-					avatar: 'http://lorempixel.com/100/100/people/7'
-				}
-			],
-			answers: [
-				'Yes!',
-				'No',
-				'Hm...',
-				'I am not sure',
-				'And what about you?',
-				'May be ;)',
-				'Lorem ipsum dolor sit amet, consectetur',
-				'What?',
-				'Are you sure?',
-				'Of course',
-				'Need to think about it',
-				'Amazing!!!'
-			],
-			responseInProgress: false
+			sheetVisible: false
 		};
+	}
+
+	componentDidMount() {
+		this.props.fetch();
+	}
+
+	isFirstMessage(message, index) {
+		const self = this;
+		const previousMessage = self.props.messages[index - 1];
+		if (message.isTitle) {
+			return false;
+		}
+		if (!previousMessage || previousMessage.type !== message.type || previousMessage.name !== message.name) {
+			return true;
+		}
+		return false;
+	}
+
+	isLastMessage(message, index) {
+		const self = this;
+		const nextMessage = self.props.messages[index + 1];
+		if (message.isTitle) {
+			return false;
+		}
+		if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) {
+			return true;
+		}
+		return false;
+	}
+
+	isTailMessage(message, index) {
+		const self = this;
+		const nextMessage = self.props.messages[index + 1];
+		if (message.isTitle) {
+			return false;
+		}
+		if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) {
+			return true;
+		}
+		return false;
 	}
 
 	render() {
@@ -102,23 +62,64 @@ export default class extends React.Component {
 					sheetVisible={this.state.sheetVisible}
 				>
 					<Link
-						iconIos="f7:camera_fill"
-						iconMd="material:camera_alt"
-						slot="inner-start"
-						onClick={() => {
-							this.setState(prevState => {
-								return {sheetVisible: !prevState.sheetVisible};
-							});
-						}}
-					/>
-					<Link
 						iconIos="f7:arrow_up_fill"
 						iconMd="material:send"
 						slot="inner-end"
 						onClick={this.sendMessage}
 					/>
 				</Messagebar>
+
+				<Messages ref={el => {
+					this.messagesComponent = el;
+				}}
+				>
+					<MessagesTitle><b>Wednesday, Nov 7,</b> 22:31</MessagesTitle>
+
+					{this.props.messages.map((message, index) => (
+						<Message
+							key={message.id}
+							type={message.type}
+							image={message.image}
+							name={message.name}
+							avatar={message.avatar}
+							first={this.isFirstMessage(message, index)}
+							last={this.isLastMessage(message, index)}
+							tail={this.isTailMessage(message, index)}
+						>
+							{message.text && (
+								<span slot="text" dangerouslySetInnerHTML={{__html: message.text}}/>
+							)}
+						</Message>
+					))}
+					{this.state.typingMessage && (
+						<Message
+							type="received"
+							typing
+							first
+							last
+							tail
+							header={`${this.state.typingMessage.name} is typing`}
+							avatar={this.state.typingMessage.avatar}
+						/>
+					)}
+				</Messages>
 			</Page>
 		);
 	}
 }
+
+const mapState = state => {
+	const [current] = state.user.accounts;
+	return {
+		current,
+		messages: state.homeTimeline.timeline
+	};
+};
+
+const mapDispatch = dispatch => {
+	return {
+		fetch: opt => dispatch.homeTimeline.fetch(opt)
+	};
+};
+
+export default connect(mapState, mapDispatch)(FanfouMessages);

@@ -27,8 +27,8 @@ export const xauth = async (username, password) => {
 			oauthToken,
 			oauthTokenSecret
 		});
-		const user = await o.get('/statuses/home_timeline', {});
-		return {token, user};
+		const profile = await o.get('/account/verify_credentials', {});
+		return {token, profile};
 	}
 	return null;
 };
@@ -39,7 +39,7 @@ const initFanfou = () => {
 		return;
 	}
 	const [user] = accounts;
-	const {oauthToken, oauthTokenSecret} = user;
+	const {oauthToken, oauthTokenSecret} = user.token;
 	const ff = new Fanfou({
 		...opt,
 		oauthToken,
@@ -48,7 +48,12 @@ const initFanfou = () => {
 	return ff;
 };
 
-export const getUserTimeline = () => {
+export const getHomeTimeline = opt => {
 	const ff = initFanfou();
-	return ff.get('/statuses/user_timeline', {count: 20});
+	return ff.get('/statuses/home_timeline', {...opt, format: 'html', count: 30});
+};
+
+export const postStatus = opt => {
+	const ff = initFanfou();
+	return ff.post('/statuses/update', {...opt});
 };
