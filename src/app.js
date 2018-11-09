@@ -22,9 +22,11 @@ const f7Params = {
 
 class FanfouApp extends React.Component {
 	render() {
+		const {current} = this.props;
+
 		return (
 			<App params={f7Params}>
-				<View main url="/messages/"/>
+				<View main url={current ? '/messages/' : '/login/'}/>
 			</App>
 		);
 	}
