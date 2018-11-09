@@ -12,6 +12,11 @@ class FanfouMessages extends React.Component {
 
 	componentDidMount() {
 		this.props.fetch();
+		const self = this;
+		self.$f7ready(() => {
+			self.messagebar = self.messagebarComponent.f7Messagebar;
+			self.messages = self.messagesComponent.f7Messages;
+		});
 	}
 
 	isFirstMessage(message, index) {
@@ -50,7 +55,17 @@ class FanfouMessages extends React.Component {
 		return false;
 	}
 
+	sendMessage = async () => {
+		const status = this.messagebar.getValue();
+		const result = await this.props.post({status});
+		if (result.error) {
+			this.$f7.dialog.alert(result.error, 'Error');
+		}
+	}
+
 	render() {
+		const {messages} = this.props;
+
 		return (
 			<Page name="messages">
 				<Messagebar
@@ -75,7 +90,7 @@ class FanfouMessages extends React.Component {
 				>
 					<MessagesTitle><b>Wednesday, Nov 7,</b> 22:31</MessagesTitle>
 
-					{this.props.messages.map((message, index) => (
+					{messages.map((message, index) => (
 						<Message
 							key={message.id}
 							type={message.type}
@@ -87,17 +102,17 @@ class FanfouMessages extends React.Component {
 							tail={this.isTailMessage(message, index)}
 						>
 							{message.text && (
-								<span slot="text" dangerouslySetInnerHTML={{__html: message.text}}/>
+								<span slot="text">{message.text}</span>
 							)}
 						</Message>
 					))}
 					{this.state.typingMessage && (
 						<Message
-							type="received"
 							typing
 							first
 							last
 							tail
+							type="received"
 							header={`${this.state.typingMessage.name} is typing`}
 							avatar={this.state.typingMessage.avatar}
 						/>
@@ -118,7 +133,8 @@ const mapState = state => {
 
 const mapDispatch = dispatch => {
 	return {
-		fetch: opt => dispatch.homeTimeline.fetch(opt)
+		fetch: opt => dispatch.homeTimeline.fetch(opt),
+		post: opt => dispatch.homeTimeline.post(opt)
 	};
 };
 

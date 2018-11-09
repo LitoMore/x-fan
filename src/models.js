@@ -86,21 +86,23 @@ export const homeTimeline = {
 		},
 		async post(opt) {
 			const status = await postStatus({...opt});
-			const messages = []
+			if (status.error) {
+				return status;
+			}
+			const messages = [];
 			messages.push({
 				id: status.id,
 				name: status.user.name,
 				type: status.is_self ? 'sent' : 'received',
 				text: status.plain_text,
-				avatar: status.profile_image_origin_large
+				avatar: status.user.profile_image_origin_large
 			});
 			if (status.photo) {
 				messages.push({
 					id: status.id + '-photo',
 					type: status.is_self ? 'sent' : 'received',
 					avatar: status.user.profile_image_origin_large,
-					name: status.user.name,
-					image: status.photo.originurl
+					name: status.user.name
 				});
 			}
 			this.appendStatus(messages);
