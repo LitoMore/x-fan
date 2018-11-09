@@ -1,8 +1,21 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {Page, Messages, Message, MessagesTitle, Messagebar, Link} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
+	static propTypes = {
+		messages: PropTypes.array,
+		fetch: PropTypes.func,
+		post: PropTypes.func
+	}
+
+	static defaultProps = {
+		messages: [],
+		fetch: () => {},
+		post: () => {}
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -126,9 +139,7 @@ class FanfouMessages extends React.Component {
 }
 
 const mapState = state => {
-	const [current] = state.user.accounts;
 	return {
-		current,
 		messages: state.homeTimeline.timeline
 	};
 };

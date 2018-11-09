@@ -9,6 +9,7 @@
     "framework7-icons": "^0.9.1",
     "framework7-react": "^3.4.2",
     "material-design-icons-iconfont": "^4.0.2",
+    "prop-types": "^15.6.2",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-redux": "^5.1.0",
@@ -52,7 +53,13 @@
             "**/*.css"
           ]
         }
-      ]
+      ],
+      "unicorn/no-abusive-eslint-disable": 0
+    }
+  },
+  "settings": {
+    "react": {
+      "version": "16"
     }
   }
 }

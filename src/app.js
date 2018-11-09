@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {App, View} from 'framework7-react';
 import Login from './pages/login';
 import Messages from './pages/messages';
@@ -21,6 +22,14 @@ const f7Params = {
 };
 
 class FanfouApp extends React.Component {
+	static propTypes = {
+		current: PropTypes.object
+	}
+
+	static defaultProps = {
+		current: null
+	}
+
 	render() {
 		const {current} = this.props;
 
