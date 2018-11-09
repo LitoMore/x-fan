@@ -10,6 +10,7 @@ import * as serviceWorker from './service-worker';
 import 'framework7/css/framework7.min.css';
 import 'framework7-icons/css/framework7-icons.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
+import './index.css';
 
 // Framework7 initialize
 F7.use(F7React);
