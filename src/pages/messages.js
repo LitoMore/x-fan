@@ -60,6 +60,8 @@ class FanfouMessages extends React.Component {
 		const result = await this.props.post({status});
 		if (result.error) {
 			this.$f7.dialog.alert(result.error, 'Error');
+		} else {
+			this.messagebar.clear();
 		}
 	}
 
