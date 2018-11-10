@@ -38,9 +38,16 @@ export const user = {
 // Home Timeline
 export const homeTimeline = {
 	state: {
+		loading: false,
 		timeline: []
 	},
 	reducers: {
+		setLoading(state, loading) {
+			return {
+				...state,
+				loading
+			}
+		},
 		setTimeline(state, timeline) {
 			return {
 				...state,
@@ -57,6 +64,7 @@ export const homeTimeline = {
 	},
 	effects: {
 		async fetch(opt) {
+			this.setLoading(true);
 			const timeline = await getHomeTimeline(opt);
 			const messages = [];
 			timeline
@@ -81,6 +89,7 @@ export const homeTimeline = {
 						}
 					}
 				});
+			this.setLoading(false);
 			this.setTimeline(messages);
 			return messages;
 		},

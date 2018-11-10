@@ -1,16 +1,18 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Page, Messages, Message, MessagesTitle, Messagebar, Link} from 'framework7-react';
+import {Page, Messages, Message, Messagebar, Link} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
 	static propTypes = {
+		loading: PropTypes.bool,
 		messages: PropTypes.array,
 		fetch: PropTypes.func,
 		post: PropTypes.func
 	}
 
 	static defaultProps = {
+		loading: false,
 		messages: [],
 		fetch: () => {},
 		post: () => {}
@@ -79,7 +81,7 @@ class FanfouMessages extends React.Component {
 	}
 
 	render() {
-		const {messages} = this.props;
+		const {loading, messages} = this.props;
 
 		return (
 			<Page name="messages">
@@ -103,8 +105,6 @@ class FanfouMessages extends React.Component {
 					this.messagesComponent = el;
 				}}
 				>
-					<MessagesTitle><b>Wednesday, Nov 7,</b> 22:31</MessagesTitle>
-
 					{messages.map((message, index) => (
 						<Message
 							key={message.id}
@@ -121,15 +121,14 @@ class FanfouMessages extends React.Component {
 							)}
 						</Message>
 					))}
-					{this.state.typingMessage && (
+					{loading && (
 						<Message
 							typing
 							first
 							last
 							tail
 							type="received"
-							header={`${this.state.typingMessage.name} is typing`}
-							avatar={this.state.typingMessage.avatar}
+							header="Loading"
 						/>
 					)}
 				</Messages>
@@ -140,6 +139,7 @@ class FanfouMessages extends React.Component {
 
 const mapState = state => {
 	return {
+		loading: state.homeTimeline.loading,
 		messages: state.homeTimeline.timeline
 	};
 };
