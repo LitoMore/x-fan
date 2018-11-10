@@ -25,7 +25,7 @@ class FanfouLogin extends React.Component {
 	render() {
 		return (
 			<Page noToolbar noNavbar noSwipeback loginScreen>
-				<LoginScreenTitle>Fanfou</LoginScreenTitle>
+				<LoginScreenTitle>X-FAN</LoginScreenTitle>
 				<List form>
 					<ListItem>
 						<Label>Username</Label>

@@ -5,7 +5,7 @@ import {Page, Messages, Message, Messagebar, Link} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
 	static propTypes = {
-		loading: PropTypes.bool,
+		loading: PropTypes.string,
 		messages: PropTypes.array,
 		fetch: PropTypes.func,
 		post: PropTypes.func
@@ -27,11 +27,18 @@ class FanfouMessages extends React.Component {
 
 	componentDidMount() {
 		this.props.fetch();
+		this.timer = setInterval(() => {
+			this.props.fetch();
+		}, 10000);
 		const self = this;
 		self.$f7ready(() => {
 			self.messagebar = self.messagebarComponent.f7Messagebar;
 			self.messages = self.messagesComponent.f7Messages;
 		});
+	}
+
+	componentWillUnmount() {
+		clearInterval(this.timer);
 	}
 
 	isFirstMessage(message, index) {
@@ -128,7 +135,7 @@ class FanfouMessages extends React.Component {
 							last
 							tail
 							type="received"
-							header="Loading"
+							header={loading}
 						/>
 					)}
 				</Messages>

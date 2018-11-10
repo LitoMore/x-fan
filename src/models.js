@@ -38,7 +38,8 @@ export const user = {
 // Home Timeline
 export const homeTimeline = {
 	state: {
-		loading: false,
+		loading: null,
+		typing: false,
 		timeline: []
 	},
 	reducers: {
@@ -46,7 +47,7 @@ export const homeTimeline = {
 			return {
 				...state,
 				loading
-			}
+			};
 		},
 		setTimeline(state, timeline) {
 			return {
@@ -63,8 +64,11 @@ export const homeTimeline = {
 		}
 	},
 	effects: {
-		async fetch(opt) {
-			this.setLoading(true);
+		async fetch(opt, state) {
+			const {timeline: tl} = state.homeTimeline;
+			if (tl.length === 0) {
+				this.setLoading('Loading');
+			}
 			const timeline = await getHomeTimeline(opt);
 			const messages = [];
 			timeline
@@ -73,6 +77,7 @@ export const homeTimeline = {
 					if (status.isOrigin()) {
 						messages.push({
 							id: status.id,
+							rawId: status.rawid,
 							name: status.user.name,
 							type: status.is_self ? 'sent' : 'received',
 							text: status.plain_text,
@@ -81,6 +86,7 @@ export const homeTimeline = {
 						if (status.photo) {
 							messages.push({
 								id: status.id + '-photo',
+								rawId: status.rawid,
 								type: status.is_self ? 'sent' : 'received',
 								avatar: status.user.profile_image_origin_large,
 								name: status.user.name,
@@ -89,8 +95,22 @@ export const homeTimeline = {
 						}
 					}
 				});
-			this.setLoading(false);
-			this.setTimeline(messages);
+			if (tl.length === 0) {
+				this.setLoading(null);
+				this.setTimeline(messages);
+			} else {
+				const latest = messages[messages.length - 1].rawId;
+				const last = tl[tl.length - 1].rawId;
+				if (latest > last) {
+					this.setLoading('Typing');
+					setTimeout(() => {
+						this.setLoading(null);
+						this.setTimeline(messages);
+					}, 1500);
+				} else {
+					return messages;
+				}
+			}
 			return messages;
 		},
 		async post(opt) {
@@ -101,6 +121,7 @@ export const homeTimeline = {
 			const messages = [];
 			messages.push({
 				id: status.id,
+				rawId: status.rawid,
 				name: status.user.name,
 				type: status.is_self ? 'sent' : 'received',
 				text: status.plain_text,
@@ -109,6 +130,7 @@ export const homeTimeline = {
 			if (status.photo) {
 				messages.push({
 					id: status.id + '-photo',
+					rawId: status.rawid,
 					type: status.is_self ? 'sent' : 'received',
 					avatar: status.user.profile_image_origin_large,
 					name: status.user.name
