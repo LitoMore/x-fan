@@ -102,11 +102,13 @@ export const homeTimeline = {
 				const latest = messages[messages.length - 1].rawId;
 				const last = tl[tl.length - 1].rawId;
 				if (latest > last) {
+					const letterCount = messages[messages.length - 1].text.length;
+					const time = 1000 + parseInt((letterCount + 1) / 140 * 4000, 10);
 					this.setLoading('Typing');
 					setTimeout(() => {
 						this.setLoading(null);
 						this.setTimeline(messages);
-					}, 1500);
+					}, time);
 				} else {
 					return messages;
 				}
