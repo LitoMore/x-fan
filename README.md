@@ -1,4 +1,4 @@
-# fanfou-f7
+# X-FAN
 
 > To be written
 
