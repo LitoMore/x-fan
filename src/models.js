@@ -75,14 +75,6 @@ export const homeTimeline = {
 				.reverse()
 				.forEach(status => {
 					if (status.isOrigin()) {
-						messages.push({
-							id: status.id,
-							rawId: status.rawid,
-							name: status.user.name,
-							type: status.is_self ? 'sent' : 'received',
-							text: status.plain_text,
-							avatar: status.user.profile_image_origin_large
-						});
 						if (status.photo) {
 							messages.push({
 								id: status.id + '-photo',
@@ -93,6 +85,14 @@ export const homeTimeline = {
 								image: status.photo.originurl
 							});
 						}
+						messages.push({
+							id: status.id,
+							rawId: status.rawid,
+							name: status.user.name,
+							type: status.is_self ? 'sent' : 'received',
+							text: status.plain_text,
+							avatar: status.user.profile_image_origin_large
+						});
 					}
 				});
 			if (tl.length === 0) {
@@ -121,14 +121,6 @@ export const homeTimeline = {
 				return status;
 			}
 			const messages = [];
-			messages.push({
-				id: status.id,
-				rawId: status.rawid,
-				name: status.user.name,
-				type: status.is_self ? 'sent' : 'received',
-				text: status.plain_text,
-				avatar: status.user.profile_image_origin_large
-			});
 			if (status.photo) {
 				messages.push({
 					id: status.id + '-photo',
@@ -138,6 +130,14 @@ export const homeTimeline = {
 					name: status.user.name
 				});
 			}
+			messages.push({
+				id: status.id,
+				rawId: status.rawid,
+				name: status.user.name,
+				type: status.is_self ? 'sent' : 'received',
+				text: status.plain_text,
+				avatar: status.user.profile_image_origin_large
+			});
 			this.appendStatus(messages);
 			return messages;
 		}
