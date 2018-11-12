@@ -1,18 +1,20 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Page, Messages, Message, Messagebar, Link} from 'framework7-react';
+import {Page, Messages, Message, Messagebar, Link, MessagebarAttachments, MessagebarAttachment} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
 	static propTypes = {
-		loading: PropTypes.string,
+		loading: PropTypes.object,
+		sending: PropTypes.object,
 		messages: PropTypes.array,
 		fetch: PropTypes.func,
 		post: PropTypes.func
 	}
 
 	static defaultProps = {
-		loading: false,
+		loading: null,
+		sending: null,
 		messages: [],
 		fetch: () => {},
 		post: () => {}
@@ -21,7 +23,7 @@ class FanfouMessages extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			sheetVisible: false
+			photo: null
 		};
 	}
 
@@ -78,34 +80,100 @@ class FanfouMessages extends React.Component {
 	}
 
 	sendMessage = async () => {
+		const {photo} = this.state;
 		const status = this.messagebar.getValue();
-		const result = await this.props.post({status});
-		if (result.error) {
-			this.$f7.dialog.alert(result.error, 'Error');
-		} else {
-			this.messagebar.clear();
+		const params = {status};
+		if (photo) {
+			params.photo = photo.file;
+		}
+		try {
+			const result = await this.props.post(params);
+			if (result.error) {
+				this.$f7.dialog.alert(result.error, 'Error');
+			} else {
+				const fileDOM = document.getElementById('file');
+				fileDOM.value = '';
+				this.messagebar.clear();
+				this.setState({photo: null});
+			}
+		} catch (error) {
+			if (photo) {
+				this.$f7.dialog.alert('图片文件过大');
+			} else {
+				this.$f7.dialog.alert('发送失败');
+			}
 		}
 	}
 
 	render() {
-		const {loading, messages} = this.props;
+		const {loading, sending, messages} = this.props;
+		const {photo} = this.state;
 
 		return (
 			<Page name="messages">
+				<input
+					id="file"
+					type="file"
+					accept="image/gif, image/jpeg, image/png, image/jpg"
+					style={{display: 'none'}}
+					onChange={() => {
+						const fileDOM = document.getElementById('file');
+						const [file] = fileDOM.files;
+						if (file) {
+							const reader = new FileReader();
+							reader.addEventListener('load', e => {
+								const {result: url} = e.target;
+								this.setState({
+									photo: {file, url}
+								});
+							});
+							reader.readAsDataURL(file);
+						}
+					}}
+				/>
 				<Messagebar
 					ref={el => {
 						this.messagebarComponent = el;
 					}}
-					attachmentsVisible={this.attachmentsVisible}
+					attachmentsVisible={Boolean(photo)}
 					placeholder={this.placeholder}
 					sheetVisible={this.state.sheetVisible}
 				>
 					<Link
+						iconIos="f7:camera_fill"
+						iconMd="material:camera_alt"
+						slot="inner-start"
+						onClick={() => {
+							if (sending) {
+								return;
+							}
+							const fileDOM = document.getElementById('file');
+							fileDOM.click();
+						}}
+					/>
+					<Link
 						iconIos="f7:arrow_up_fill"
 						iconMd="material:send"
 						slot="inner-end"
-						onClick={this.sendMessage}
+						onClick={() => {
+							if (sending) {
+								return;
+							}
+							this.sendMessage();
+						}}
 					/>
+					<MessagebarAttachments>
+						{photo ? (
+							<MessagebarAttachment
+								image={photo.url}
+								onAttachmentDelete={() => {
+									const fileDOM = document.getElementById('file');
+									fileDOM.value = '';
+									this.setState({photo: null});
+								}}
+							/>
+						) : null}
+					</MessagebarAttachments>
 				</Messagebar>
 
 				<Messages

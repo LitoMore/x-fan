@@ -55,5 +55,8 @@ export const getHomeTimeline = opt => {
 
 export const postStatus = opt => {
 	const ff = initFanfou();
+	if (opt.photo) {
+		return ff.upload('/photos/upload', {...opt});
+	}
 	return ff.post('/statuses/update', {...opt});
 };

@@ -39,6 +39,7 @@ export const user = {
 export const homeTimeline = {
 	state: {
 		loading: null,
+		sending: null,
 		typing: false,
 		timeline: []
 	},
@@ -47,6 +48,12 @@ export const homeTimeline = {
 			return {
 				...state,
 				loading
+			};
+		},
+		setSending(state, sending) {
+			return {
+				...state,
+				sending
 			};
 		},
 		setTimeline(state, timeline) {
@@ -124,8 +131,10 @@ export const homeTimeline = {
 			return messages;
 		},
 		async post(opt) {
+			this.setSending(opt);
 			const status = await postStatus({...opt});
 			if (status.error) {
+				this.setSending(null);
 				return status;
 			}
 			const messages = [];
@@ -135,10 +144,11 @@ export const homeTimeline = {
 					rawId: status.rawid,
 					type: status.is_self ? 'sent' : 'received',
 					avatar: status.user.profile_image_origin_large,
-					name: status.user.name
+					name: status.user.name,
+					image: status.photo.originurl
 				});
 			}
-			if (status.text !== '') {
+			if (status.text !== '' && status.text !== '上传了新照片') {
 				messages.push({
 					id: status.id,
 					rawId: status.rawid,
@@ -148,6 +158,7 @@ export const homeTimeline = {
 					avatar: status.user.profile_image_origin_large
 				});
 			}
+			this.setSending(null);
 			this.appendStatus(messages);
 			return messages;
 		}
