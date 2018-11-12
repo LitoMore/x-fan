@@ -67,7 +67,10 @@ export const homeTimeline = {
 		async fetch(opt, state) {
 			const {timeline: tl} = state.homeTimeline;
 			if (tl.length === 0) {
-				this.setLoading('Loading');
+				this.setLoading({
+					header: 'Loading',
+					avatar: '/x-fan.png'
+				});
 			}
 			const timeline = await getHomeTimeline(opt);
 			const messages = [];
@@ -106,7 +109,10 @@ export const homeTimeline = {
 				if (latest > last) {
 					const letterCount = messages[messages.length - 1].text.length;
 					const time = 1000 + parseInt((letterCount + 1) / 140 * 4000, 10);
-					this.setLoading('Typing');
+					this.setLoading({
+						header: messages[messages.length - 1].name,
+						avatar: messages[messages.length - 1].avatar
+					});
 					setTimeout(() => {
 						this.setLoading(null);
 						this.setTimeline(messages);

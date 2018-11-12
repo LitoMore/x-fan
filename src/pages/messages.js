@@ -137,7 +137,8 @@ class FanfouMessages extends React.Component {
 							last
 							tail
 							type="received"
-							header={loading}
+							header={loading.header}
+							avatar={loading.avatar}
 						/>
 					)}
 				</Messages>
