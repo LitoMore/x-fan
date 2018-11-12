@@ -108,9 +108,11 @@ class FanfouMessages extends React.Component {
 					/>
 				</Messagebar>
 
-				<Messages ref={el => {
-					this.messagesComponent = el;
-				}}
+				<Messages
+					ref={el => {
+						this.messagesComponent = el;
+					}}
+					scrollMessagesOnEdge
 				>
 					{messages.map((message, index) => (
 						<Message
