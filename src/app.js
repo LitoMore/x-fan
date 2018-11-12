@@ -18,7 +18,8 @@ const f7Params = {
 			path: '/login/',
 			component: Login
 		}
-	]
+	],
+	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto'
 };
 
 class FanfouApp extends React.Component {
