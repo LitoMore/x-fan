@@ -18,7 +18,9 @@ class FanfouLogin extends React.Component {
 		if (auth === null) {
 			this.$f7.dialog.alert('Username and password do not match', 'X-FAN');
 		} else {
-			this.$f7router.navigate('/messages/');
+			this.$f7router.navigate('/messages/', {
+				clearPreviousHistory: true
+			});
 		}
 	}
 

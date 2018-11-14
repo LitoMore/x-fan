@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {App, View} from 'framework7-react';
 import Login from './pages/login';
 import Messages from './pages/messages';
+import Settings from './pages/settings';
 
 const f7Params = {
 	name: 'Fanfou',
@@ -17,6 +18,10 @@ const f7Params = {
 			name: 'login',
 			path: '/login/',
 			component: Login
+		}, {
+			name: 'settings',
+			path: '/settings/',
+			component: Settings
 		}
 	],
 	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto'

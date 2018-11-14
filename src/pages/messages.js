@@ -152,6 +152,16 @@ class FanfouMessages extends React.Component {
 						}}
 					/>
 					<Link
+						iconIos="f7:more_round_fill"
+						slot="inner-start"
+						onClick={() => {
+							if (sending) {
+								return;
+							}
+							this.$f7router.navigate('/settings/');
+						}}
+					/>
+					<Link
 						iconIos="f7:arrow_up_fill"
 						iconMd="material:send"
 						slot="inner-end"
