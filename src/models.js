@@ -21,6 +21,11 @@ export const user = {
 				...state,
 				accounts
 			};
+		},
+		logout() {
+			return {
+				accounts: []
+			};
 		}
 	},
 	effects: {
@@ -67,6 +72,14 @@ export const homeTimeline = {
 			return {
 				...state,
 				timeline
+			};
+		},
+		clearTimeline() {
+			return {
+				loading: null,
+				sending: null,
+				typing: false,
+				timeline: []
 			};
 		}
 	},
