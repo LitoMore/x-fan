@@ -191,7 +191,6 @@ class FanfouMessages extends React.Component {
 						this.messagesComponent = el;
 					}}
 					scrollMessagesOnEdge
-					scrollMessages={false}
 				>
 					{messages.map((message, index) => (
 						<Message
