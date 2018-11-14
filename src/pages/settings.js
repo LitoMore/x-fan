@@ -12,8 +12,8 @@ class FanfouSettings extends React.Component {
 						title="Logout"
 						color="red"
 						onClick={() => {
-							this.$f7router.navigate('/login/', {
-								clearPreviousHistory: true
+							this.$f7router.back('/login/', {
+								force: true
 							});
 							localStorage.clear();
 						}}
