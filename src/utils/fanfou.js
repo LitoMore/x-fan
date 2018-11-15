@@ -8,10 +8,11 @@ const hooks = {
 	baseString: baseStr => {
 		return baseStr
 			.replace('cors.fanfou.com%2Foauth', 'fanfou.com%2Foauth')
-			.replace('cors.fanfou.com', 'api.fanfou.com');
+			.replace('cors.fanfou.com', 'api.fanfou.com')
+			.replace('https', 'http');
 	}
 };
-const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks};
+const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks, https: true};
 
 export const xauth = async (username, password) => {
 	const x = new Fanfou({
