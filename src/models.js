@@ -108,7 +108,7 @@ export const homeTimeline = {
 								image: status.photo.originurl
 							});
 						}
-						if (status.text !== '') {
+						if (status.text !== '' && status.text !== '上传了新照片') {
 							messages.push({
 								id: status.id,
 								rawId: status.rawid,
