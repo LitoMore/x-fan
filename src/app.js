@@ -24,7 +24,13 @@ const f7Params = {
 			component: Settings
 		}
 	],
-	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto'
+	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto',
+	statusBar: {
+		enabled: true,
+		overlay: false,
+		iosBackgroundColor: '#ffffff',
+		androidBackgroundColor: '#ffffff'
+	}
 };
 
 class FanfouApp extends React.Component {
