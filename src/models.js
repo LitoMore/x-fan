@@ -1,4 +1,4 @@
-import {xauth, getHomeTimeline, postStatus, deleteStatus} from './utils/fanfou';
+import {xauth, getHomeTimeline, postStatus} from './utils/fanfou';
 
 // Read accounts from localStorage
 let accounts = [];
@@ -69,16 +69,6 @@ export const homeTimeline = {
 		},
 		appendStatus(state, status) {
 			const timeline = state.timeline.concat(status);
-			return {
-				...state,
-				timeline
-			};
-		},
-		removeStatus(state, statusId) {
-			const timeline = state.timeline.filter(message => {
-				const pattern = new RegExp(`${statusId}(-photo)?`);
-				return !pattern.test(message.id);
-			});
 			return {
 				...state,
 				timeline
@@ -184,14 +174,6 @@ export const homeTimeline = {
 			this.setSending(null);
 			this.appendStatus(messages);
 			return messages;
-		},
-		async destroy(opt) {
-			const status = await deleteStatus(opt);
-			if (status.error) {
-				return status;
-			}
-			this.removeStatus(status.id);
-			return status;
 		}
 	}
 };
