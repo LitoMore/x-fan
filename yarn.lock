@@ -3754,9 +3754,10 @@ fragment-cache@^0.2.1:
   dependencies:
     map-cache "^0.2.2"
 
-framework7-icons@^0.9.1:
+framework7-icons@0.9.1:
   version "0.9.1"
   resolved "https://registry.yarnpkg.com/framework7-icons/-/framework7-icons-0.9.1.tgz#01f089ce9f71eae112f516630b17009929a8b384"
+  integrity sha512-UuT5GJJ3ghAT/AnFcBJHpt5re/ps+oM1+B8yUolE+EK+Ftnpw0wyOTZH+aeHR1Wd2fEkDnQUMTyvt19drBqX/g==
 
 framework7-react@^3.4.2:
   version "3.4.3"

@@ -8,7 +8,7 @@ const hooks = {
 	baseString: baseStr => {
 		return baseStr
 			.replace('%2F%2Fcors.fanfou.com%2Foauth', 'http%3A%2F%2Ffanfou.com%2Foauth')
-			.replace('%2F%2Fcors.fanfou.com', 'http%3A%2F%2Fapi.fanfou.com');
+			.replace('%2F%2Fcors.fanfou.com', 'http%3A%2F%2Fapi.fanfou.com')
 	}
 };
 const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks};
