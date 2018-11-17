@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
-import {Page, BlockTitle, List, ListButton} from 'framework7-react';
+import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle} from 'framework7-react';
 
 class FanfouSettings extends React.Component {
 	static propTypes = {
@@ -17,6 +17,10 @@ class FanfouSettings extends React.Component {
 	render() {
 		return (
 			<Page>
+				<Navbar>
+					<NavLeft backLink="back"/>
+					<NavTitle>Settings</NavTitle>
+				</Navbar>
 				<BlockTitle>ACCOUNT</BlockTitle>
 				<List>
 					<ListButton

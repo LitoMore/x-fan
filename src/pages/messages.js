@@ -153,6 +153,7 @@ class FanfouMessages extends React.Component {
 					/>
 					<Link
 						iconIos="f7:more_round_fill"
+						iconMd="material:more_vert"
 						slot="inner-start"
 						onClick={() => {
 							if (sending) {
