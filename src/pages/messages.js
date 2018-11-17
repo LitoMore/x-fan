@@ -228,6 +228,7 @@ class FanfouMessages extends React.Component {
 
 const mapState = state => {
 	return {
+		sending: state.homeTimeline.sending,
 		loading: state.homeTimeline.loading,
 		messages: state.homeTimeline.timeline
 	};
