@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Page, Messages, Message, Messagebar, Link, MessagebarAttachments, MessagebarAttachment} from 'framework7-react';
+import {Page, Messages, Message, Messagebar, Link, MessagebarAttachments, MessagebarAttachment, List, ListButton, Popover} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
 	static propTypes = {
@@ -36,6 +36,7 @@ class FanfouMessages extends React.Component {
 		self.$f7ready(() => {
 			self.messagebar = self.messagebarComponent.f7Messagebar;
 			self.messages = self.messagesComponent.f7Messages;
+			console.log(self);
 		});
 	}
 
@@ -106,7 +107,7 @@ class FanfouMessages extends React.Component {
 	}
 
 	render() {
-		const {loading, sending, messages} = this.props;
+		const {loading, sending, messages, destroy} = this.props;
 		const {photo} = this.state;
 
 		return (
@@ -196,6 +197,7 @@ class FanfouMessages extends React.Component {
 					{messages.map((message, index) => (
 						<Message
 							key={message.id}
+							className={`message-${message.id}`}
 							type={message.type}
 							image={message.image}
 							name={message.name}
@@ -203,10 +205,33 @@ class FanfouMessages extends React.Component {
 							first={this.isFirstMessage(message, index)}
 							last={this.isLastMessage(message, index)}
 							tail={this.isTailMessage(message, index)}
+							onClickBubble={() => {
+								if (message.type === 'sent') {
+									this.$f7.popover.open(`.popover-${message.id}`, `.message-${message.id}`);
+								}
+							}}
 						>
 							{message.text && (
 								<span slot="text">{message.text}</span>
 							)}
+							{message.type === 'sent' ? (
+								<Popover className={`popover-${message.id}`}>
+									<List>
+										<ListButton
+											color="red"
+											title="Destroy"
+											onClick={async () => {
+												const id = message.id.replace(/-photo$/, '');
+												const status = await destroy({id});
+												if (status.error) {
+													this.$f7.dialog.alert('删除失败');
+												}
+												this.$f7.popover.close(`.popover-${message.id}`);
+											}}
+										/>
+									</List>
+								</Popover>
+							) : null}
 						</Message>
 					))}
 					{loading && (
@@ -237,7 +262,8 @@ const mapState = state => {
 const mapDispatch = dispatch => {
 	return {
 		fetch: opt => dispatch.homeTimeline.fetch(opt),
-		post: opt => dispatch.homeTimeline.post(opt)
+		post: opt => dispatch.homeTimeline.post(opt),
+		destroy: opt => dispatch.homeTimeline.destroy(opt)
 	};
 };
 

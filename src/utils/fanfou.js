@@ -60,3 +60,8 @@ export const postStatus = opt => {
 	}
 	return ff.post('/statuses/update', {...opt});
 };
+
+export const deleteStatus = opt => {
+	const ff = initFanfou();
+	return ff.post('/statuses/destroy', {...opt});
+};
