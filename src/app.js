@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {App, View} from 'framework7-react';
+import {App, View, Statusbar} from 'framework7-react';
 import Login from './pages/login';
 import Messages from './pages/messages';
 import Settings from './pages/settings';
@@ -24,7 +24,11 @@ const f7Params = {
 			component: Settings
 		}
 	],
-	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto'
+	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto',
+	statusbar: {
+		enabled: false,
+		overlay: false
+	}
 };
 
 class FanfouApp extends React.Component {
@@ -48,6 +52,7 @@ class FanfouApp extends React.Component {
 
 		return (
 			<App params={f7Params}>
+				<Statusbar/>
 				<View main url={current ? '/messages/' : '/login/'}/>
 			</App>
 		);

@@ -14,6 +14,12 @@ class FanfouSettings extends React.Component {
 		clearTimeline: () => {}
 	}
 
+	componentDidMount() {
+		this.$f7ready(() => {
+			this.$f7.statusbar.show();
+		});
+	}
+
 	render() {
 		return (
 			<Page>
