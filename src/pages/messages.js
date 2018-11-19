@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Page, Messages, Message, Messagebar, Link, MessagebarAttachments, MessagebarAttachment} from 'framework7-react';
+import {Page, Messages, Message, Messagebar, Link, MessagebarAttachments, MessagebarAttachment, PhotoBrowser} from 'framework7-react';
 
 class FanfouMessages extends React.Component {
 	static propTypes = {
@@ -23,7 +23,8 @@ class FanfouMessages extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			photo: null
+			photo: null,
+			photos: []
 		};
 	}
 
@@ -107,7 +108,7 @@ class FanfouMessages extends React.Component {
 
 	render() {
 		const {loading, sending, messages} = this.props;
-		const {photo} = this.state;
+		const {photo, photos} = this.state;
 
 		return (
 			<Page name="messages">
@@ -131,6 +132,21 @@ class FanfouMessages extends React.Component {
 						}
 					}}
 				/>
+
+				{photos.length > 0 ? (
+					<PhotoBrowser
+						ref={el => {
+							this.photoBrowser = el;
+						}}
+						navbar={false}
+						toolbar={false}
+						photos={photos}
+						onPhotoBrowserClose={() => {
+							this.setState({photos: []});
+						}}
+					/>
+				) : null}
+
 				<Messagebar
 					ref={el => {
 						this.messagebarComponent = el;
@@ -203,6 +219,13 @@ class FanfouMessages extends React.Component {
 							first={this.isFirstMessage(message, index)}
 							last={this.isLastMessage(message, index)}
 							tail={this.isTailMessage(message, index)}
+							onClickBubble={() => {
+								if (message.image) {
+									this.setState({photos: [message.image]}, () => {
+										this.photoBrowser.open();
+									});
+								}
+							}}
 						>
 							{message.text && (
 								<span slot="text">{message.text}</span>
