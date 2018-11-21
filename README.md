@@ -1,4 +1,4 @@
-<img width="75px" height="75px" src="https://raw.githubusercontent.com/fanfoujs/fandou/master/public/x-fan.svg?sanitize=true" align="right" />
+<img width="75px" height="75px" src="https://raw.githubusercontent.com/LitoMore/x-fan/master/public/x-fan.svg?sanitize=true" align="right" />
 
 # X-FAN
 
