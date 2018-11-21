@@ -110,6 +110,9 @@ class FanfouMessages extends React.Component {
 	render() {
 		const {loading, sending, messages} = this.props;
 		const {photo, photos} = this.state;
+		const messageStyle = {
+			maxWidth: window.innerWidth >= 400 ? 300 : null
+		};
 
 		return (
 			<Page name="messages">
@@ -214,6 +217,7 @@ class FanfouMessages extends React.Component {
 						<Message
 							key={message.id}
 							type={message.type}
+							style={message.image ? messageStyle : null}
 							image={message.image}
 							name={message.name}
 							avatar={message.avatar}
