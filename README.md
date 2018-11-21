@@ -1,3 +1,5 @@
+<img width="75px" height="75px" src="https://raw.githubusercontent.com/fanfoujs/fandou/master/public/x-fan.svg?sanitize=true" align="right" />
+
 # X-FAN
 
 [![](https://badges.greenkeeper.io/LitoMore/x-fan.svg)](https://greenkeeper.io)
