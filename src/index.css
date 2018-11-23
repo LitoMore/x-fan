@@ -1,5 +1,6 @@
-html, body {
-	height: 100% !important;
+/* Fix statusbar on iPhone X */
+html.ios.with-statusbar, .ios.with-statusbar body {
+	height: 100vh;
 }
 
 .ios .message-sent .message-bubble {

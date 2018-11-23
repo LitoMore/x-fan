@@ -26,8 +26,12 @@ const f7Params = {
 	],
 	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto',
 	statusbar: {
-		enabled: false,
-		overlay: false
+		overlay: 'standalone' in window.navigator &&
+			window.navigator.standalone &&
+			document
+				.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')
+				.getAttribute('content')
+				.indexOf('translucent') >= 0
 	}
 };
 
