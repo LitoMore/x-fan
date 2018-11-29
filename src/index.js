@@ -4,7 +4,7 @@ import {init} from '@rematch/core';
 import {Provider} from 'react-redux';
 import F7 from 'framework7/framework7.esm.bundle';
 import F7React from 'framework7-react';
-import * as models from './models';
+import * as models from './rematch';
 import App from './app';
 import * as serviceWorker from './service-worker';
 import 'framework7/css/framework7.min.css';

@@ -52,34 +52,41 @@ export const homeTimeline = {
 					avatar: '/x-fan.png'
 				});
 			}
-			const timeline = await getHomeTimeline(opt);
-			const messages = [];
+
+			// Only append new origin status
+			const [{rawId: lastStatusId} = {rawId: 0}] = tl.slice().reverse();
+
+			let timeline = await getHomeTimeline(opt);
+			timeline = timeline.filter(status => status.isOrigin() && status.rawid > lastStatusId);
+
+			let messages = tl.slice();
 			timeline
 				.reverse()
 				.forEach(status => {
-					if (status.isOrigin()) {
-						if (status.photo) {
-							messages.push({
-								id: status.id + '-photo',
-								rawId: status.rawid,
-								type: status.is_self ? 'sent' : 'received',
-								avatar: status.user.profile_image_origin_large,
-								name: status.user.name,
-								image: status.photo.originurl
-							});
-						}
-						if (status.text !== '' && status.text !== '上传了新照片') {
-							messages.push({
-								id: status.id,
-								rawId: status.rawid,
-								name: status.user.name,
-								type: status.is_self ? 'sent' : 'received',
-								text: status.plain_text,
-								avatar: status.user.profile_image_origin_large
-							});
-						}
+					if (status.photo) {
+						messages.push({
+							id: status.id + '-photo',
+							rawId: status.rawid,
+							type: status.is_self ? 'sent' : 'received',
+							avatar: status.user.profile_image_origin_large,
+							name: status.user.name,
+							image: status.photo.originurl
+						});
+					}
+					if (status.text !== '' && status.text !== '上传了新照片') {
+						messages.push({
+							id: status.id,
+							rawId: status.rawid,
+							name: status.user.name,
+							type: status.is_self ? 'sent' : 'received',
+							text: status.plain_text,
+							avatar: status.user.profile_image_origin_large
+						});
 					}
 				});
+			// Only display 200 statuses
+			messages = messages.slice(-200);
+
 			if (tl.length === 0) {
 				this.setLoading(null);
 				this.setTimeline(messages);
