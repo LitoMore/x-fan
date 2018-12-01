@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
-import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle} from 'framework7-react';
+import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link} from 'framework7-react';
+import githubBadge from './assets/github.svg';
 
 class FanfouSettings extends React.Component {
 	static propTypes = {
@@ -42,6 +43,11 @@ class FanfouSettings extends React.Component {
 						}}
 					/>
 				</List>
+				<Block style={{textAlign: 'center'}}>
+					<Link external href="https://github.com/LitoMore/x-fan" target="_blank">
+						<img alt="github-badge" src={githubBadge}/>
+					</Link>
+				</Block>
 			</Page>
 		);
 	}
