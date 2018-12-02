@@ -21,7 +21,7 @@
   "scripts": {
     "start": "npm run remove:www && react-scripts start",
     "build": "react-scripts build",
-    "cordova": "cp -r build www && node __script.js",
+    "build:cordova": "cp -r build www && node __script.js",
     "test": "xo && npm run build",
     "eject": "react-scripts eject"
   },
