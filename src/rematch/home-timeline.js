@@ -53,13 +53,13 @@ export const homeTimeline = {
 				});
 			}
 
-			// Only append new origin status
-			const [{rawId: lastStatusId} = {rawId: 0}] = tl.slice().reverse();
-
+			// Fetch the latest timeline state
 			let timeline = await getHomeTimeline(opt);
+			const {timeline: latestTimeline} = state.homeTimeline;
+			const [{rawId: lastStatusId} = {rawId: 0}] = latestTimeline.slice().reverse();
 			timeline = timeline.filter(status => status.isOrigin() && status.rawid > lastStatusId);
+			let messages = latestTimeline.slice();
 
-			let messages = tl.slice();
 			timeline
 				.reverse()
 				.forEach(status => {
@@ -84,6 +84,7 @@ export const homeTimeline = {
 						});
 					}
 				});
+
 			// Only display 200 statuses
 			messages = messages.slice(-200);
 
