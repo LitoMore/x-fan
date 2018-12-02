@@ -52,10 +52,10 @@ class FanfouApp extends React.Component {
 	}
 
 	render() {
-		const {current} = this.props;
+		const {current, settings} = this.props;
 
 		return (
-			<App params={f7Params}>
+			<App params={f7Params} themeDark={settings.nightMode}>
 				<Statusbar/>
 				<View main url={current ? '/messages/' : '/login/'}/>
 			</App>
@@ -65,7 +65,10 @@ class FanfouApp extends React.Component {
 
 const mapState = state => {
 	const [current] = state.user.accounts;
-	return {current};
+	return {
+		current,
+		settings: state.settings
+	};
 };
 
 export default connect(mapState)(FanfouApp);

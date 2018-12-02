@@ -1,18 +1,22 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
-import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link} from 'framework7-react';
+import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link, ListItem, Toggle} from 'framework7-react';
 import githubBadge from '../assets/github.svg';
 
 class FanfouSettings extends React.Component {
 	static propTypes = {
 		logout: PropTypes.func,
-		clearTimeline: PropTypes.func
+		clearTimeline: PropTypes.func,
+		switchNightMode: PropTypes.func,
+		settings: PropTypes.object
 	}
 
 	static defaultProps = {
 		logout: () => {},
-		clearTimeline: () => {}
+		clearTimeline: () => {},
+		switchNightMode: () => {},
+		settings: {}
 	}
 
 	componentDidMount() {
@@ -22,13 +26,27 @@ class FanfouSettings extends React.Component {
 	}
 
 	render() {
+		const {settings} = this.props;
+
 		return (
-			<Page>
+			<Page main>
 				<Navbar>
 					<NavLeft backLink="back"/>
 					<NavTitle>Settings</NavTitle>
 				</Navbar>
+
 				<BlockTitle>DISPLAY</BlockTitle>
+				<List>
+					<ListItem title="Night mode">
+						<Toggle
+							slot="after"
+							checked={settings.nightMode}
+							onToggleChange={activated => {
+								this.props.switchNightMode(activated);
+							}}
+						/>
+					</ListItem>
+				</List>
 
 				<BlockTitle>ACCOUNT</BlockTitle>
 				<List>
@@ -39,7 +57,7 @@ class FanfouSettings extends React.Component {
 							this.$f7router.back('/login/', {
 								force: true
 							});
-							localStorage.clear();
+							localStorage.removeItem('accounts');
 							this.props.logout();
 							this.props.clearTimeline();
 						}}
@@ -55,11 +73,18 @@ class FanfouSettings extends React.Component {
 	}
 }
 
-const mapDispatch = dispatch => {
+const mapState = state => {
 	return {
-		logout: () => dispatch.user.logout(),
-		clearTimeline: () => dispatch.homeTimeline.clearTimeline()
+		settings: state.settings
 	};
 };
 
-export default connect(null, mapDispatch)(FanfouSettings);
+const mapDispatch = dispatch => {
+	return {
+		logout: () => dispatch.user.logout(),
+		clearTimeline: () => dispatch.homeTimeline.clearTimeline(),
+		switchNightMode: activated => dispatch.settings.switchNightMode(activated)
+	};
+};
+
+export default connect(mapState, mapDispatch)(FanfouSettings);
