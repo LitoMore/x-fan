@@ -38,13 +38,6 @@ class FanfouApp extends React.Component {
 		settings: {}
 	}
 
-	componentDidMount() {
-		const welcomeLogo = document.getElementById('welcome-logo');
-		if (welcomeLogo) {
-			welcomeLogo.style.display = 'none';
-		}
-	}
-
 	render() {
 		const {current, settings} = this.props;
 
