@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {App, View, Statusbar} from 'framework7-react';
+import {App, View} from 'framework7-react';
 import Login from './pages/login';
 import Messages from './pages/messages';
 import Settings from './pages/settings';
@@ -24,15 +24,7 @@ const f7Params = {
 			component: Settings
 		}
 	],
-	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto',
-	statusbar: {
-		overlay: 'standalone' in window.navigator &&
-			window.navigator.standalone &&
-			document
-				.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]')
-				.getAttribute('content')
-				.indexOf('translucent') >= 0
-	}
+	theme: window.navigator.platform === 'MacIntel' ? 'ios' : 'auto'
 };
 
 class FanfouApp extends React.Component {
@@ -58,7 +50,6 @@ class FanfouApp extends React.Component {
 
 		return (
 			<App params={f7Params} themeDark={settings.nightMode}>
-				<Statusbar/>
 				<View main url={current ? '/messages/' : '/login/'}/>
 			</App>
 		);

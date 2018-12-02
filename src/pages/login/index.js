@@ -11,12 +11,6 @@ class FanfouLogin extends React.Component {
 		};
 	}
 
-	componentDidMount() {
-		this.$f7ready(() => {
-			this.$f7.statusbar.hide();
-		});
-	}
-
 	login = async () => {
 		const {username, password} = this.state;
 		const {login} = this.props;

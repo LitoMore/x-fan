@@ -19,12 +19,6 @@ class FanfouSettings extends React.Component {
 		settings: {}
 	}
 
-	componentDidMount() {
-		this.$f7ready(() => {
-			this.$f7.statusbar.show();
-		});
-	}
-
 	render() {
 		const {settings} = this.props;
 

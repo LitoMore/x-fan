@@ -37,7 +37,6 @@ class FanfouMessages extends React.Component {
 		}, 10000);
 		const self = this;
 		self.$f7ready(() => {
-			self.$f7.statusbar.hide();
 			self.messagebar = self.messagebarComponent.f7Messagebar;
 			self.messages = self.messagesComponent.f7Messages;
 		});
