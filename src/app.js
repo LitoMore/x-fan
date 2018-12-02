@@ -37,11 +37,13 @@ const f7Params = {
 
 class FanfouApp extends React.Component {
 	static propTypes = {
-		current: PropTypes.object
+		current: PropTypes.object,
+		settings: PropTypes.object
 	}
 
 	static defaultProps = {
-		current: null
+		current: null,
+		settings: {}
 	}
 
 	componentDidMount() {
