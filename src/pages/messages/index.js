@@ -7,6 +7,7 @@ class FanfouMessages extends React.Component {
 	static propTypes = {
 		loading: PropTypes.object,
 		sending: PropTypes.object,
+		settings: PropTypes.object,
 		messages: PropTypes.array,
 		fetch: PropTypes.func,
 		post: PropTypes.func
@@ -15,6 +16,7 @@ class FanfouMessages extends React.Component {
 	static defaultProps = {
 		loading: null,
 		sending: null,
+		settings: {},
 		messages: [],
 		fetch: () => {},
 		post: () => {}
@@ -142,6 +144,7 @@ class FanfouMessages extends React.Component {
 						ref={el => {
 							this.photoBrowser = el;
 						}}
+						theme={this.props.settings.nightMode ? 'dark' : 'light'}
 						navbar={false}
 						toolbar={false}
 						photos={photos}
@@ -258,7 +261,8 @@ const mapState = state => {
 	return {
 		sending: state.homeTimeline.sending,
 		loading: state.homeTimeline.loading,
-		messages: state.homeTimeline.timeline
+		messages: state.homeTimeline.timeline,
+		settings: state.settings
 	};
 };
 
