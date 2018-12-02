@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
 import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link} from 'framework7-react';
-import githubBadge from './assets/github.svg';
+import githubBadge from '../assets/github.svg';
 
 class FanfouSettings extends React.Component {
 	static propTypes = {
@@ -28,6 +28,8 @@ class FanfouSettings extends React.Component {
 					<NavLeft backLink="back"/>
 					<NavTitle>Settings</NavTitle>
 				</Navbar>
+				<BlockTitle>DISPLAY</BlockTitle>
+
 				<BlockTitle>ACCOUNT</BlockTitle>
 				<List>
 					<ListButton
