@@ -23,7 +23,7 @@
     "react-scripts": "^2.1.1"
   },
   "scripts": {
-    "start": "npm run remove:www && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "build:cordova": "cp -r build www && node __script.js",
     "test": "xo && npm run build",

@@ -1,5 +1,16 @@
 import {getHomeTimeline, postStatus} from '../utils/fanfou';
 
+const ignoredStatus = text => {
+	const ignoreList = ['', '.', '上传了新照片'];
+	if (ignoreList.indexOf(text) >= 0) {
+		return true;
+	}
+	if (Number.isInteger(Number(text))) {
+		return true;
+	}
+	return false;
+};
+
 // Home Timeline
 export const homeTimeline = {
 	state: {
@@ -73,7 +84,8 @@ export const homeTimeline = {
 							image: status.photo.originurl
 						});
 					}
-					if (status.text !== '' && status.text !== '上传了新照片') {
+
+					if (!ignoredStatus(status.text)) {
 						messages.push({
 							id: status.id,
 							rawId: status.rawid,
@@ -129,7 +141,7 @@ export const homeTimeline = {
 					image: status.photo.originurl
 				});
 			}
-			if (status.text !== '' && status.text !== '上传了新照片') {
+			if (!ignoredStatus(status.text)) {
 				messages.push({
 					id: status.id,
 					rawId: status.rawid,
