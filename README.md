@@ -10,7 +10,7 @@
 
 A Fanfou client with front-end alone
 
-<div align="center"><img width="35%" height="35%" src="https://raw.githubusercontent.com/LitoMore/x-fan/master/screenshot.png" /></div>
+<div align="center"><img width="40%" height="40%" src="https://raw.githubusercontent.com/LitoMore/x-fan/master/screenshot.png" /></div>
 
 ## Related
 
