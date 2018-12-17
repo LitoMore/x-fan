@@ -10,6 +10,8 @@
 
 A Fanfou client with front-end alone
 
+<div align="center"><img width="50%" height="50%" src="https://raw.githubusercontent.com/LitoMore/x-fan/master/screenshot.png" /></div>
+
 ## Related
 
 - [fanfou-sdk-browser](https://github.com/LitoMore/fanfou-sdk-browser) - Fanfou SDK for browser
