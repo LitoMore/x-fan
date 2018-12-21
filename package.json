@@ -68,18 +68,5 @@
     "react": {
       "version": "16"
     }
-  },
-  "cordova": {
-    "plugins": {
-      "cordova-plugin-whitelist": {},
-      "cordova-plugin-statusbar": {}
-    },
-    "platforms": [
-      "browser",
-      "ios",
-      "android",
-      "osx",
-      "windows"
-    ]
   }
 }
