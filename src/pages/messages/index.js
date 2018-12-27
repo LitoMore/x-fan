@@ -185,7 +185,7 @@ class FanfouMessages extends React.Component {
 						}}
 					/>
 					<Link
-						iconIos="f7:arrow_up_fill"
+						iconIos="f7:arrow_up_round_fill"
 						iconMd="material:send"
 						slot="inner-end"
 						onClick={() => {
