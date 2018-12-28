@@ -1,8 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 import {Page, LoginScreenTitle, List, ListItem, Label, Input, ListButton, BlockFooter} from 'framework7-react';
 
 class FanfouLogin extends React.Component {
+	static propTypes = {
+		login: PropTypes.func
+	}
+
+	static defaultProps = {
+		login: () => {}
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
