@@ -79,7 +79,7 @@ export const homeTimeline = {
 							id: status.id + '-photo',
 							rawId: status.rawid,
 							type: status.is_self ? 'sent' : 'received',
-							avatar: status.user.profile_image_origin_large,
+							avatar: status.user.profile_image_url_large,
 							name: status.user.name,
 							image: status.photo.originurl
 						});
@@ -92,7 +92,7 @@ export const homeTimeline = {
 							name: status.user.name,
 							type: status.is_self ? 'sent' : 'received',
 							text: status.plain_text,
-							avatar: status.user.profile_image_origin_large
+							avatar: status.user.profile_image_url_large
 						});
 					}
 				});
@@ -136,7 +136,7 @@ export const homeTimeline = {
 					id: status.id + '-photo',
 					rawId: status.rawid,
 					type: status.is_self ? 'sent' : 'received',
-					avatar: status.user.profile_image_origin_large,
+					avatar: status.user.profile_image_url_large,
 					name: status.user.name,
 					image: status.photo.originurl
 				});
@@ -148,7 +148,7 @@ export const homeTimeline = {
 					name: status.user.name,
 					type: status.is_self ? 'sent' : 'received',
 					text: status.plain_text,
-					avatar: status.user.profile_image_origin_large
+					avatar: status.user.profile_image_url_large
 				});
 			}
 			this.setSending(null);
