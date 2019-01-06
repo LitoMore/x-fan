@@ -46,6 +46,11 @@ class FanfouMessages extends React.Component {
 		clearInterval(this.timer);
 	}
 
+	get placeholder() {
+		const self = this;
+		return self.state.attachments.length > 0 ? 'Add comment or Send' : 'Message';
+	}
+
 	isFirstMessage(message, index) {
 		const self = this;
 		const previousMessage = self.props.messages[index - 1];
