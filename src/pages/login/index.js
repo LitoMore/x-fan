@@ -55,9 +55,8 @@ class FanfouLogin extends React.Component {
 				</List>
 				<List>
 					<ListButton onClick={this.login}>Sign In</ListButton>
-					{/* eslint-disable accessible-emoji */}
+					{/* eslint-disable-next-line */}
 					<BlockFooter>Code with ❤️️ by LitoMore</BlockFooter>
-					{/* eslint-enable accessible-emoji */}
 				</List>
 			</Page>
 		);
