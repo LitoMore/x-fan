@@ -61,7 +61,8 @@
           ]
         }
       ],
-      "unicorn/no-abusive-eslint-disable": 0
+      "unicorn/no-abusive-eslint-disable": 0,
+      "eslint-comments/no-unused-disable": 0
     }
   },
   "settings": {
