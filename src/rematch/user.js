@@ -34,6 +34,7 @@ export const user = {
 			if (auth) {
 				this.addAccount(auth);
 			}
+
 			return auth;
 		}
 	}

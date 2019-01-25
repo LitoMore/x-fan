@@ -35,6 +35,7 @@ export const user = {
 			if (auth) {
 				this.addAccount(auth);
 			}
+
 			return auth;
 		}
 	}
@@ -92,6 +93,7 @@ export const homeTimeline = {
 					avatar: '/x-fan.png'
 				});
 			}
+
 			const timeline = await getHomeTimeline(opt);
 			const messages = [];
 			timeline
@@ -108,6 +110,7 @@ export const homeTimeline = {
 								image: status.photo.originurl
 							});
 						}
+
 						if (status.text !== '' && status.text !== '上传了新照片') {
 							messages.push({
 								id: status.id,
@@ -141,6 +144,7 @@ export const homeTimeline = {
 					return messages;
 				}
 			}
+
 			return messages;
 		},
 		async post(opt) {
@@ -150,6 +154,7 @@ export const homeTimeline = {
 				this.setSending(null);
 				return status;
 			}
+
 			const messages = [];
 			if (status.photo) {
 				messages.push({
@@ -161,6 +166,7 @@ export const homeTimeline = {
 					image: status.photo.originurl
 				});
 			}
+
 			if (status.text !== '' && status.text !== '上传了新照片') {
 				messages.push({
 					id: status.id,
@@ -171,6 +177,7 @@ export const homeTimeline = {
 					avatar: status.user.profile_image_origin_large
 				});
 			}
+
 			this.setSending(null);
 			this.appendStatus(messages);
 			return messages;

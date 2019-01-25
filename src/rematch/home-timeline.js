@@ -5,9 +5,11 @@ const ignoredStatus = text => {
 	if (ignoreList.indexOf(text) >= 0) {
 		return true;
 	}
+
 	if (Number.isInteger(Number(text))) {
 		return true;
 	}
+
 	return false;
 };
 
@@ -121,6 +123,7 @@ export const homeTimeline = {
 					return messages;
 				}
 			}
+
 			return messages;
 		},
 		async post(opt) {
@@ -130,6 +133,7 @@ export const homeTimeline = {
 				this.setSending(null);
 				return status;
 			}
+
 			const messages = [];
 			if (status.photo) {
 				messages.push({
@@ -141,6 +145,7 @@ export const homeTimeline = {
 					image: status.photo.originurl
 				});
 			}
+
 			if (!ignoredStatus(status.text)) {
 				messages.push({
 					id: status.id,
@@ -151,6 +156,7 @@ export const homeTimeline = {
 					avatar: status.user.profile_image_url_large
 				});
 			}
+
 			this.setSending(null);
 			this.appendStatus(messages);
 			return messages;

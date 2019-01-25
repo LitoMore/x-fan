@@ -55,7 +55,6 @@ class FanfouLogin extends React.Component {
 				</List>
 				<List>
 					<ListButton onClick={this.login}>Sign In</ListButton>
-					{/* eslint-disable-next-line */}
 					<BlockFooter>Code with ❤️️ by LitoMore</BlockFooter>
 				</List>
 			</Page>

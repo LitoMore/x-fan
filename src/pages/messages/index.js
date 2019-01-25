@@ -57,9 +57,11 @@ class FanfouMessages extends React.Component {
 		if (message.isTitle) {
 			return false;
 		}
+
 		if (!previousMessage || previousMessage.type !== message.type || previousMessage.name !== message.name) {
 			return true;
 		}
+
 		return false;
 	}
 
@@ -69,9 +71,11 @@ class FanfouMessages extends React.Component {
 		if (message.isTitle) {
 			return false;
 		}
+
 		if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) {
 			return true;
 		}
+
 		return false;
 	}
 
@@ -81,9 +85,11 @@ class FanfouMessages extends React.Component {
 		if (message.isTitle) {
 			return false;
 		}
+
 		if (!nextMessage || nextMessage.type !== message.type || nextMessage.name !== message.name) {
 			return true;
 		}
+
 		return false;
 	}
 
@@ -94,12 +100,13 @@ class FanfouMessages extends React.Component {
 		if (photo) {
 			params.photo = photo.file;
 		}
+
 		try {
 			const result = await this.props.post(params);
 			if (result.error) {
 				this.$f7.dialog.alert(result.error, 'Error');
 			} else {
-				const fileDOM = document.getElementById('file');
+				const fileDOM = document.querySelector('#file');
 				fileDOM.value = '';
 				this.messagebar.clear();
 				this.setState({photo: null});
@@ -128,7 +135,7 @@ class FanfouMessages extends React.Component {
 					accept="image/gif, image/jpeg, image/png, image/jpg"
 					style={{display: 'none'}}
 					onChange={() => {
-						const fileDOM = document.getElementById('file');
+						const fileDOM = document.querySelector('#file');
 						const [file] = fileDOM.files;
 						if (file) {
 							const reader = new FileReader();
@@ -174,7 +181,8 @@ class FanfouMessages extends React.Component {
 							if (sending) {
 								return;
 							}
-							const fileDOM = document.getElementById('file');
+
+							const fileDOM = document.querySelector('#file');
 							fileDOM.click();
 						}}
 					/>
@@ -186,6 +194,7 @@ class FanfouMessages extends React.Component {
 							if (sending) {
 								return;
 							}
+
 							this.$f7router.navigate('/settings/');
 						}}
 					/>
@@ -197,6 +206,7 @@ class FanfouMessages extends React.Component {
 							if (sending) {
 								return;
 							}
+
 							this.sendMessage();
 						}}
 					/>
@@ -205,7 +215,7 @@ class FanfouMessages extends React.Component {
 							<MessagebarAttachment
 								image={photo.url}
 								onAttachmentDelete={() => {
-									const fileDOM = document.getElementById('file');
+									const fileDOM = document.querySelector('#file');
 									fileDOM.value = '';
 									this.setState({photo: null});
 								}}

@@ -3,6 +3,7 @@ export const getAccounts = () => {
 	try {
 		accounts = JSON.parse(localStorage.getItem('accounts'));
 	} catch (error) {}
+
 	return accounts;
 };
 
@@ -14,6 +15,7 @@ export const addAccount = account => {
 	if (found) {
 		return;
 	}
+
 	accounts.push(account);
 	localStorage.setItem('accounts', JSON.stringify(accounts));
 };

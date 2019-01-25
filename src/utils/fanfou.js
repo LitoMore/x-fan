@@ -30,6 +30,7 @@ export const xauth = async (username, password) => {
 		const profile = await o.get('/account/verify_credentials', {});
 		return {token, profile};
 	}
+
 	return null;
 };
 
@@ -38,6 +39,7 @@ const initFanfou = () => {
 	if (accounts.length === 0) {
 		return;
 	}
+
 	const [user] = accounts;
 	const {oauthToken, oauthTokenSecret} = user.token;
 	const ff = new Fanfou({
@@ -58,5 +60,6 @@ export const postStatus = opt => {
 	if (opt.photo) {
 		return ff.upload('/photos/upload', {...opt});
 	}
+
 	return ff.post('/statuses/update', {...opt});
 };
