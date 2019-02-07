@@ -5,7 +5,7 @@
   "dependencies": {
     "@rematch/core": "^1.0.6",
     "fanfou-sdk-browser": "^0.3.0",
-    "framework7": "^3.6.5",
+    "framework7": "^4.0.0",
     "framework7-icons": "^2.1.1",
     "framework7-react": "^3.6.5",
     "material-design-icons-iconfont": "^4.0.4",
