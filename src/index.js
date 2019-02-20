@@ -7,7 +7,7 @@ import F7React from 'framework7-react';
 import * as models from './rematch';
 import App from './app';
 import * as serviceWorker from './service-worker';
-import 'framework7/css/framework7.min.css';
+import 'framework7/css/framework7.bundle.min.css';
 import 'framework7-icons/css/framework7-icons.css';
 import 'material-design-icons-iconfont/dist/material-design-icons.css';
 import './index.css';
