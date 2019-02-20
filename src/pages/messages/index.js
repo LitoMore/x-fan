@@ -26,7 +26,8 @@ class FanfouMessages extends React.Component {
 		super(props);
 		this.state = {
 			photo: null,
-			photos: []
+			photos: [],
+			messageText: ''
 		};
 	}
 
@@ -117,7 +118,7 @@ class FanfouMessages extends React.Component {
 
 	render() {
 		const {loading, sending, messages} = this.props;
-		const {photo, photos} = this.state;
+		const {photo, photos, messageText} = this.state;
 		const messageStyle = window.innerWidth > 400 ? {
 			maxWidth: 300
 		} : null;
@@ -154,6 +155,7 @@ class FanfouMessages extends React.Component {
 						navbar={false}
 						toolbar={false}
 						photos={photos}
+						value={messageText}
 						onPhotoBrowserClose={() => {
 							this.setState({photos: []});
 						}}
@@ -166,6 +168,9 @@ class FanfouMessages extends React.Component {
 					}}
 					attachmentsVisible={Boolean(photo)}
 					sheetVisible={this.state.sheetVisible}
+					onInput={e => {
+						this.setState({messageText: e.target.value});
+					}}
 				>
 					<Link
 						iconIos="f7:camera_fill"

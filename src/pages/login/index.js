@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import {Page, LoginScreenTitle, List, ListItem, Label, Input, ListButton, BlockFooter} from 'framework7-react';
+import {Page, LoginScreenTitle, List, ListInput, ListButton, BlockFooter} from 'framework7-react';
 
 class FanfouLogin extends React.Component {
 	static propTypes = {
@@ -38,20 +38,22 @@ class FanfouLogin extends React.Component {
 			<Page noToolbar noNavbar noSwipeback loginScreen>
 				<LoginScreenTitle>X-FAN</LoginScreenTitle>
 				<List form>
-					<ListItem>
-						<Label>Username</Label>
-						<Input type="text" placeholder="Your username" onInput={e => {
+					<ListInput
+						label="Username"
+						type="text"
+						placeholder="Your username"
+						onInput={e => {
 							this.setState({username: e.target.value});
 						}}
-						/>
-					</ListItem>
-					<ListItem>
-						<Label>Password</Label>
-						<Input type="password" placeholder="Your password" onInput={e => {
+					/>
+					<ListInput
+						label="Password"
+						type="password"
+						placeholder="Your password"
+						onInput={e => {
 							this.setState({password: e.target.value});
 						}}
-						/>
-					</ListItem>
+					/>
 				</List>
 				<List>
 					<ListButton onClick={this.login}>Sign In</ListButton>
