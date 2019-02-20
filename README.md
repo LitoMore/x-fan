@@ -12,6 +12,12 @@ A Fanfou client with front-end alone
 
 <div align="center"><img width="40%" height="40%" src="https://raw.githubusercontent.com/LitoMore/x-fan/master/screenshot.png" /></div>
 
+---
+
+<a href="https://www.patreon.com/LitoMore">
+  <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
+</a>
+
 ## Related
 
 - [fanfou-sdk-browser](https://github.com/LitoMore/fanfou-sdk-browser) - Fanfou SDK for browser
