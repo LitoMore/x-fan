@@ -7,7 +7,7 @@ import Messages from './pages/messages';
 import Settings from './pages/settings';
 
 const f7Params = {
-	name: 'Fanfou',
+	name: 'X-FAN',
 	id: 'com.litomore.xfanfou',
 	routes: [
 		{

@@ -92,6 +92,12 @@ class FanfouMessages extends React.Component {
 	sendMessage = async () => {
 		const {photo} = this.state;
 		const status = this.messagebar.getValue();
+
+		if (!status) {
+			this.$f7.dialog.alert('信息发送失败，请输入信息内容！');
+			return;
+		}
+
 		const params = {status};
 		if (photo) {
 			params.photo = photo.file;
@@ -100,7 +106,7 @@ class FanfouMessages extends React.Component {
 		try {
 			const result = await this.props.post(params);
 			if (result.error) {
-				this.$f7.dialog.alert(result.error, 'Error');
+				this.$f7.dialog.alert(result.error);
 			} else {
 				const fileDOM = document.querySelector('#file');
 				fileDOM.value = '';
