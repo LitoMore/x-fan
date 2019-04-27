@@ -1,27 +1,25 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {PropTypes} from 'prop-types';
-import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link, ListItem, Toggle} from 'framework7-react';
+import {Page, BlockTitle, List, ListButton, Navbar, NavLeft, NavTitle, Block, Link} from 'framework7-react';
 import githubBadge from '../assets/github.svg';
 
 class FanfouSettings extends React.Component {
 	static propTypes = {
 		logout: PropTypes.func,
-		clearTimeline: PropTypes.func,
-		switchNightMode: PropTypes.func,
-		settings: PropTypes.object
+		clearTimeline: PropTypes.func
+		// SwitchNightMode: PropTypes.func,
+		// settings: PropTypes.object
 	}
 
 	static defaultProps = {
 		logout: () => {},
-		clearTimeline: () => {},
-		switchNightMode: () => {},
-		settings: {}
+		clearTimeline: () => {}
+		// SwitchNightMode: () => {},
+		// settings: {}
 	}
 
 	render() {
-		const {settings} = this.props;
-
 		return (
 			<Page main>
 				<Navbar>
@@ -29,7 +27,7 @@ class FanfouSettings extends React.Component {
 					<NavTitle>Settings</NavTitle>
 				</Navbar>
 
-				<BlockTitle>DISPLAY</BlockTitle>
+				{/* <BlockTitle>DISPLAY</BlockTitle>
 				<List>
 					<ListItem title="Night mode">
 						<Toggle
@@ -40,7 +38,7 @@ class FanfouSettings extends React.Component {
 							}}
 						/>
 					</ListItem>
-				</List>
+				</List> */}
 
 				<BlockTitle>ACCOUNT</BlockTitle>
 				<List>
