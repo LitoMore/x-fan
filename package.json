@@ -21,6 +21,9 @@
     "test": "xo && npm run build",
     "eject": "react-scripts eject"
   },
+  "engines": {
+    "node": ">=10"
+  },
   "browserslist": [
     ">0.2%",
     "not dead",
