@@ -8,15 +8,11 @@ class FanfouSettings extends React.Component {
 	static propTypes = {
 		logout: PropTypes.func,
 		clearTimeline: PropTypes.func
-		// SwitchNightMode: PropTypes.func,
-		// settings: PropTypes.object
 	}
 
 	static defaultProps = {
 		logout: () => {},
 		clearTimeline: () => {}
-		// SwitchNightMode: () => {},
-		// settings: {}
 	}
 
 	render() {
@@ -26,19 +22,6 @@ class FanfouSettings extends React.Component {
 					<NavLeft backLink="back"/>
 					<NavTitle>Settings</NavTitle>
 				</Navbar>
-
-				{/* <BlockTitle>DISPLAY</BlockTitle>
-				<List>
-					<ListItem title="Night mode">
-						<Toggle
-							slot="after"
-							checked={settings.nightMode}
-							onToggleChange={activated => {
-								this.props.switchNightMode(activated);
-							}}
-						/>
-					</ListItem>
-				</List> */}
 
 				<BlockTitle>ACCOUNT</BlockTitle>
 				<List>
