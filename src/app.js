@@ -29,20 +29,18 @@ const f7Params = {
 
 class FanfouApp extends React.Component {
 	static propTypes = {
-		current: PropTypes.object,
-		settings: PropTypes.object
+		current: PropTypes.object
 	}
 
 	static defaultProps = {
-		current: null,
-		settings: {}
+		current: null
 	}
 
 	render() {
-		const {current, settings} = this.props;
+		const {current} = this.props;
 
 		return (
-			<App params={f7Params} themeDark={settings.nightMode}>
+			<App params={f7Params}>
 				<View main url={current ? '/messages/' : '/login/'}/>
 			</App>
 		);

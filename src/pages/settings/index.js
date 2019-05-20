@@ -57,8 +57,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
 	return {
 		logout: () => dispatch.user.logout(),
-		clearTimeline: () => dispatch.homeTimeline.clearTimeline(),
-		switchNightMode: activated => dispatch.settings.switchNightMode(activated)
+		clearTimeline: () => dispatch.homeTimeline.clearTimeline()
 	};
 };
 

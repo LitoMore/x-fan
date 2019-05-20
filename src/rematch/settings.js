@@ -1,6 +1,4 @@
-const defaultSettings = {
-	nightMode: false
-};
+const defaultSettings = {};
 
 // Get settings from localStorage
 let localSettings = {};
@@ -17,17 +15,7 @@ export const settings = {
 		updateSettings(state) {
 			localStorage.setItem('settings', JSON.stringify(state));
 			return state;
-		},
-		setNightMode(state, activated) {
-			const settings = {...state, nightMode: activated};
-			return settings;
 		}
 	},
-	effects: {
-		switchNightMode(activated) {
-			this.setNightMode(activated);
-			this.updateSettings();
-			return activated;
-		}
-	}
+	effects: {}
 };
