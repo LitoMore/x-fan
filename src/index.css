@@ -1,3 +1,7 @@
 .ios .message-sent .message-bubble {
 	background: #007aff;
 }
+
+.aurora .toolbar a:link {
+	padding: 0 4px;
+}

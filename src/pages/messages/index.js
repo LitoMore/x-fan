@@ -176,6 +176,7 @@ class FanfouMessages extends React.Component {
 					}}
 				>
 					<Link
+						iconAurora="f7:camera_fill"
 						iconIos="f7:camera_fill"
 						iconMd="material:camera_alt"
 						slot="inner-start"
@@ -189,6 +190,7 @@ class FanfouMessages extends React.Component {
 						}}
 					/>
 					<Link
+						iconAurora="f7:more_round_fill"
 						iconIos="f7:more_round_fill"
 						iconMd="material:more_vert"
 						slot="inner-start"
@@ -201,6 +203,7 @@ class FanfouMessages extends React.Component {
 						}}
 					/>
 					<Link
+						iconAurora="f7:arrow_up_round_fill"
 						iconIos="f7:arrow_up_round_fill"
 						iconMd="material:send"
 						slot="inner-end"
