@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.css"],"names":[],"mappings":"AAAA,mCACC,kBACD,CAEA,wBACC,aACD","file":"main.f0ab825f.chunk.css","sourcesContent":[".ios .message-sent .message-bubble {\n\tbackground: #007aff;\n}\n\n.aurora .toolbar a:link {\n\tpadding: 0 4px;\n}\n"]}

@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/static/css/main.f0ab825f.chunk.css",
+    "main.js": "/static/js/main.8bf3befb.chunk.js",
+    "main.js.map": "/static/js/main.8bf3befb.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.3202fd8a.chunk.css": "/static/css/2.3202fd8a.chunk.css",
+    "static/js/2.1e8a4b63.chunk.js": "/static/js/2.1e8a4b63.chunk.js",
+    "static/js/2.1e8a4b63.chunk.js.map": "/static/js/2.1e8a4b63.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.62a1485ac56c33fa217caf091d45635f.js": "/precache-manifest.62a1485ac56c33fa217caf091d45635f.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.3202fd8a.chunk.css.map": "/static/css/2.3202fd8a.chunk.css.map",
+    "static/css/main.f0ab825f.chunk.css.map": "/static/css/main.f0ab825f.chunk.css.map",
+    "static/media/framework7-icons.css": "/static/media/Framework7Icons-Regular.5fce7c12.woff",
+    "static/media/material-design-icons.css": "/static/media/MaterialIcons-Regular.da4ea5cd.ttf",
+    "static/media/github.svg": "/static/media/github.5a5753ed.svg"
+  }
+}
