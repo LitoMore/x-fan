@@ -19,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "xo && npm run build",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
   },
   "engines": {
     "node": ">=10"
@@ -36,6 +37,7 @@
     "eslint-config-xo-react": "^0.19.0",
     "eslint-plugin-react": "^7.12.4",
     "eslint-plugin-react-hooks": "^1.4.0",
+    "gh-pages": "^2.0.1",
     "xo": "^0.24.0"
   },
   "xo": {
