@@ -20,13 +20,10 @@ class FanfouMessages extends React.Component {
 		post: () => {}
 	}
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			photo: null,
-			photos: [],
-			messageText: ''
-		};
+	state = {
+		photo: null,
+		photos: [],
+		messageText: ''
 	}
 
 	componentDidMount() {

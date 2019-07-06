@@ -12,13 +12,10 @@ class FanfouLogin extends React.Component {
 		login: () => {}
 	}
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			username: '',
-			password: ''
-		};
-	}
+	state = {
+		username: '',
+		password: ''
+	};
 
 	login = async () => {
 		const {username, password} = this.state;

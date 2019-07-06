@@ -32,11 +32,11 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
+    "babel-eslint": "^10.0.2",
     "eslint-config-xo": "^0.26.0",
     "eslint-config-xo-react": "^0.20.0",
-    "eslint-plugin-react": "^7.12.4",
-    "eslint-plugin-react-hooks": "^1.4.0",
+    "eslint-plugin-react": "^7.14.2",
+    "eslint-plugin-react-hooks": "^1.6.1",
     "gh-pages": "^2.0.1",
     "xo": "^0.24.0"
   },
@@ -47,9 +47,9 @@
       "browser"
     ],
     "extends": [
-      "xo/esnext",
       "xo-react"
     ],
+    "plugins": "react",
     "ignores": [
       "hooks/**",
       "platforms/**",
