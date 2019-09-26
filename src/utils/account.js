@@ -2,7 +2,7 @@ export const getAccounts = () => {
 	let accounts = [];
 	try {
 		accounts = JSON.parse(localStorage.getItem('accounts'));
-	} catch (error) {}
+	} catch (_) {}
 
 	return accounts;
 };

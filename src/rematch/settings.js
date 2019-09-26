@@ -4,7 +4,7 @@ const defaultSettings = {};
 let localSettings = {};
 try {
 	localSettings = JSON.parse(localStorage.getItem('settings') || {});
-} catch (error) {}
+} catch (_) {}
 
 export const settings = {
 	state: {
