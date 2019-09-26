@@ -2,7 +2,7 @@ import {getHomeTimeline, postStatus} from '../utils/fanfou';
 
 const ignoredStatus = text => {
 	const ignoreList = ['', '.', '上传了新照片'];
-	if (ignoreList.indexOf(text) >= 0) {
+	if (ignoreList.includes(text)) {
 		return true;
 	}
 

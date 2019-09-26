@@ -4,7 +4,7 @@ import {xauth, getHomeTimeline, postStatus} from './utils/fanfou';
 let accounts = [];
 try {
 	accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-} catch (error) {}
+} catch (_) {}
 
 // User
 export const user = {

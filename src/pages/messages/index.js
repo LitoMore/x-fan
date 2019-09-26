@@ -108,7 +108,7 @@ class FanfouMessages extends React.Component {
 				this.messagebar.clear();
 				this.setState({photo: null});
 			}
-		} catch (error) {
+		} catch (_) {
 			if (photo) {
 				this.$f7.dialog.alert('图片文件过大');
 			} else {

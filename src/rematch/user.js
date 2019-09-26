@@ -4,7 +4,7 @@ import {xauth} from '../utils/fanfou';
 let accounts = [];
 try {
 	accounts = JSON.parse(localStorage.getItem('accounts')) || [];
-} catch (error) {}
+} catch (_) {}
 
 export const user = {
 	state: {accounts},
