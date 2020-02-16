@@ -1,20 +1,28 @@
 {
   "files": {
     "main.css": "/x-fan/static/css/main.f0ab825f.chunk.css",
-    "main.js": "/x-fan/static/js/main.1fe0eab3.chunk.js",
-    "main.js.map": "/x-fan/static/js/main.1fe0eab3.chunk.js.map",
-    "runtime-main.js": "/x-fan/static/js/runtime-main.c0525643.js",
-    "runtime-main.js.map": "/x-fan/static/js/runtime-main.c0525643.js.map",
-    "static/css/2.510857d2.chunk.css": "/x-fan/static/css/2.510857d2.chunk.css",
-    "static/js/2.9ae3396b.chunk.js": "/x-fan/static/js/2.9ae3396b.chunk.js",
-    "static/js/2.9ae3396b.chunk.js.map": "/x-fan/static/js/2.9ae3396b.chunk.js.map",
+    "main.js": "/x-fan/static/js/main.35ef0548.chunk.js",
+    "main.js.map": "/x-fan/static/js/main.35ef0548.chunk.js.map",
+    "runtime-main.js": "/x-fan/static/js/runtime-main.a8891bc9.js",
+    "runtime-main.js.map": "/x-fan/static/js/runtime-main.a8891bc9.js.map",
+    "static/css/2.5a5a0fd2.chunk.css": "/x-fan/static/css/2.5a5a0fd2.chunk.css",
+    "static/js/2.83c65099.chunk.js": "/x-fan/static/js/2.83c65099.chunk.js",
+    "static/js/2.83c65099.chunk.js.map": "/x-fan/static/js/2.83c65099.chunk.js.map",
     "index.html": "/x-fan/index.html",
-    "precache-manifest.eeb80c49b55dbe6f6590bd395673eb8c.js": "/x-fan/precache-manifest.eeb80c49b55dbe6f6590bd395673eb8c.js",
+    "precache-manifest.0238d3f06080fdef8af336192b69667f.js": "/x-fan/precache-manifest.0238d3f06080fdef8af336192b69667f.js",
     "service-worker.js": "/x-fan/service-worker.js",
-    "static/css/2.510857d2.chunk.css.map": "/x-fan/static/css/2.510857d2.chunk.css.map",
+    "static/css/2.5a5a0fd2.chunk.css.map": "/x-fan/static/css/2.5a5a0fd2.chunk.css.map",
     "static/css/main.f0ab825f.chunk.css.map": "/x-fan/static/css/main.f0ab825f.chunk.css.map",
+    "static/js/2.83c65099.chunk.js.LICENSE.txt": "/x-fan/static/js/2.83c65099.chunk.js.LICENSE.txt",
     "static/media/framework7-icons.css": "/x-fan/static/media/Framework7Icons-Regular.9ee96e3a.eot",
     "static/media/material-design-icons.css": "/x-fan/static/media/MaterialIcons-Regular.da4ea5cd.ttf",
     "static/media/github.svg": "/x-fan/static/media/github.5a5753ed.svg"
-  }
+  },
+  "entrypoints": [
+    "static/js/runtime-main.a8891bc9.js",
+    "static/css/2.5a5a0fd2.chunk.css",
+    "static/js/2.83c65099.chunk.js",
+    "static/css/main.f0ab825f.chunk.css",
+    "static/js/main.35ef0548.chunk.js"
+  ]
 }
