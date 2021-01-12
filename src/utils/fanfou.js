@@ -2,14 +2,13 @@ import Fanfou from 'fanfou-sdk-browser';
 import {consumerKey, consumerSecret} from '../config/fanfou.config';
 import {getAccounts} from './account';
 
-const apiDomain = 'cors.fanfou.pro';
-const oauthDomain = 'cors.fanfou.pro';
+const apiDomain = 'api.fanfou.com';
+const oauthDomain = 'fanfou.com';
 const hooks = {
 	baseString: baseStr => baseStr
-		.replace('%2F%2Fcors.fanfou.pro%2Foauth', 'http%3A%2F%2Ffanfou.com%2Foauth')
-		.replace('%2F%2Fcors.fanfou.pro', 'http%3A%2F%2Fapi.fanfou.com')
+		.replace('https', 'http')
 };
-const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks};
+const opt = {consumerKey, consumerSecret, apiDomain, oauthDomain, hooks, protocol: 'https:'};
 
 export const xauth = async (username, password) => {
 	const x = new Fanfou({
