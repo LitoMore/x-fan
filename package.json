@@ -23,7 +23,7 @@
     "deploy": "gh-pages -d build"
   },
   "engines": {
-    "node": ">=10"
+    "node": ">=12"
   },
   "browserslist": [
     ">0.2%",
